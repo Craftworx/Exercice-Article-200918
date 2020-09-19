@@ -14,28 +14,15 @@
 //
 //NOTES:
 //La structure Article doit se trouver dans un fichier séparé.
+
+//Voilà une deuxième version qui afffiche le nom et le prix mais pas encore d'incrémentation de l'identifiant
+
 //Il faut s'assurer que le numéro d'article est unique (variable globale incrémenté à l'ajout de nouvel article).
 //  Created by Al on 18/09/2020.
 //  Copyright © 2020 Cool Apps. All rights reserved.
 //
 
 import Foundation
-//import Article
-
-struct Article {
-    //var prix:Float = 0
-    var nom:String = " "
-    //var identifiant:Int = 1
-    //var serialNumber: Int=1
-    
-    func print() -> String {
-        return (" Salut: \(nom)")
-        //serialNumber += 1
-        //return identifiant
-        }
-    
-    }
-    
 
 let a1 = Article()
 print(a1.print())
