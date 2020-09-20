@@ -9,10 +9,19 @@ import Foundation
 
 struct Article {
     
+    enum Categorie:String {
+        case Inconnu
+        case Multimedia
+        case Outil
+        case Meuble
+        case Divers
+        }
+    
     var nom:String
     var prix:Float
-   
-    //on n'est appremment pas obligé de les intialiser puisqu'ils le seront par le constructeur
+    var categorie:Categorie
+    //let inc = Categorie.Inconnu.rawValue
+   //on n'est appremment pas obligé de les intialiser puisqu'ils le seront par le constructeur
    
     func labelNom() -> String {
         return ("""
@@ -31,12 +40,35 @@ struct Article {
 
                 """)
         }
+    func afficheCategorieCommeString() -> String {
+        
+        switch self.categorie {
+            
+            case .Inconnu:
+                let inc = Categorie.Inconnu.rawValue
+                return inc
+            case .Meuble:
+                let mob = Categorie.Meuble.rawValue
+                return mob
+            case .Multimedia:
+                let mmd = Categorie.Multimedia.rawValue
+                return mmd
+            case .Outil:
+                let out = Categorie.Outil.rawValue
+                return out
+            case .Divers:
+                let div = Categorie.Divers.rawValue
+                return div
+            }
+        }
     
     func affiche() {
             print(self.labelNom())
             print(self.labelPrix())
+            print("Catégorie: ")
+            print(self.afficheCategorieCommeString())
             print(self.identification())
-        }
+            }
     
 }
     
