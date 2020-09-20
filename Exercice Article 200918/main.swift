@@ -24,8 +24,15 @@
 
 import Foundation
 
+var identifiant = 0
+
 let a1 = Article()
 print(a1.print())
+print(a1.affichePrix())
+print(a1.identifie())
 
-
+let a2 = Article()
+print(a2.print())
+print(a2.affichePrix())
+print(a2.identifie())
 
