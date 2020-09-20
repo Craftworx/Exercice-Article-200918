@@ -5,30 +5,41 @@
 //  Created by Al on 18/09/2020.
 //  Copyright © 2020 Cool Apps. All rights reserved.
 //
-
 import Foundation
 
-
-public struct Article {
+struct Article {
     
-    var prix:Float = 35.0
-    var nom:String = " Poupée "
-    //var identifiant:Int = 1
-    
-    func print() -> String {
+    var nom:String
+    var prix:Float
+   
+    //on n'est appremment pas obligé de les intialiser puisqu'ils le seront par le constructeur
+   
+    func labelNom() -> String {
         return ("""
                 Nom: \(nom)
                 """)
          }
-    func affichePrix() -> String {
-        return ("Prix: \(prix)")
-    }
     
-    func identifie() -> String {
+    func labelPrix() -> String {
+        return ("Prix: \(prix)")
+        }
+    
+    func identification() -> String {
         identifiant += 1
-        return ("Article: \(identifiant)")
-    }
+        return ("""
+                Article: 0000\(identifiant)
+
+                """)
+        }
+    
+    func affiche() {
+            print(self.labelNom())
+            print(self.labelPrix())
+            print(self.identification())
+        }
+    
 }
     
-
-
+//Questions Guillaume:
+// 1. où précisément mettre les accolades ?
+// 2. On n'est apparemment pas obligé d'intialiser les attributs, est-ce par ce qu'ils le seront par le constructeur

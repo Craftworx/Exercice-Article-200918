@@ -24,15 +24,18 @@
 
 import Foundation
 
-var identifiant = 0
+var identifiant:Int = 0
 
-let a1 = Article()
-print(a1.print())
-print(a1.affichePrix())
-print(a1.identifie())
+let a1 = Article(nom: "poupée", prix: 38.99)
+a1.affiche()
 
-let a2 = Article()
-print(a2.print())
-print(a2.affichePrix())
-print(a2.identifie())
+let a2 = Article(nom: "brol", prix: 12.0)
+a2.affiche()
+
+var a3 = Article(nom: "livre", prix: 13)
+a3.affiche()
+
+//var a4 = Article(?)
+//marche pas, pas moyen de créer un article optionnel
+
 
