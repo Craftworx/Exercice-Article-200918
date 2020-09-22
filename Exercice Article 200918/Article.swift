@@ -57,4 +57,4 @@ struct Article {
 //Questions Guillaume:
 // 1. où précisément mettre les accolades ?
 // 2. On n'est apparemment pas obligé d'intialiser les attributs, est-ce par ce qu'ils le seront par le constructeur
-// 3. rawVAlue des case de enum
+// 3. rawValue des case de enum ?
