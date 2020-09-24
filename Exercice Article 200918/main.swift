@@ -24,19 +24,19 @@
 
 import Foundation
 
-var identifiant:Int = 0
-
-let a1 = Article(nom: "Poupée", prix: 38.99, catégorie:.Divers)
+let a1 = Article(nom: "Poupée", prix: 38.99, categorie:.Divers)
 
 a1.affiche()
 
-let a2 = Article(nom: "brol", prix: 12.0, catégorie:.Multimedia)
+let a2 = Article(nom: "brol", prix: 12.0, categorie:.Multimedia)
 a2.affiche()
 
-var a3 = Article(nom: "livre", prix: 13, catégorie:.Outil)
-//a3.affiche()
+let a3 = Article(nom: "livre", prix: 13)
+a3.affiche()
 
-//var a4 = Article(?)
+var a4 = Article(nom: "essuie-patates", prix: 2453.99)
+a4.affiche()
+
 //marche pas, pas moyen de créer un article optionnel
 
 

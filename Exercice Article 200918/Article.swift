@@ -9,48 +9,62 @@ import Foundation
 
 struct Article {
     
-    enum Catégorie:String {
+    enum Categorie:String {
         case Inconnu = "Inconnu"
         case Multimedia = "Multimedia"
         case Outil = "Outil"
         case Meuble = "Meuble"
         case Divers = "Divers"
         
-        func catégorieToString() -> String {
+        func categorieToString() -> String {
             return self.rawValue
             }
         }
+   
+    //Une variable static est une variable qui est commune à toutes les instances d'Article
+    //Sa valeur est commune à toute les instances d'Article
+    static var n_article = 0
+    
+    // on pourrait ajouter que la varaibl est private c'est à dire qu'elle ne peut pas être modifiée ne dehors du programme (mais elle peut être lue, je crois
+    
+    static func nombreDarticle() -> Int {
+        return Article.n_article
+    }
     
     var nom:String
     var prix:Float
-    var catégorie:Catégorie
-    //let inc = Categorie.Inconnu.rawValue
-   //on n'est appremment pas obligé de les intialiser puisqu'ils le seront par le constructeur
+    var categorie:Categorie
+    var id:Int = 0
    
-    func labelNom() -> String {
-        return ("""
-                Nom: \(nom)
-                """)
-         }
+    //le constructeur de base est surchargé par les deux définitions suivantes
+    init(nom: String, prix: Float) {
+        // c'est ici qu'on va incrémenter la variable statique, et ce qui est important c'est d'écrire que la variable est celle de la structure, pas de l'instance: Article.n_article
+        Article.n_article += 1
+        self.id = Article.n_article
+        self.categorie = .Inconnu
+        self.nom = nom
+        self.prix = prix
+    }
     
-    func labelPrix() -> String {
-        return ("Prix: \(prix)")
-        }
+    init(nom: String, prix: Float, categorie: Categorie) {
+        self.init(nom: nom, prix: prix)
+        self.categorie = categorie
+    }
     
-    func identification() -> String {
-        identifiant += 1
-        return ("""
-                Article: 0000\(identifiant)
-
-                """)
-        }
     
+    
+   
+   
     func affiche() {
-            print(self.labelNom())
-            print(self.labelPrix())
-            print("Catégorie: ", (catégorie.catégorieToString()))
-            print(self.identification())
-            }
+        print("""
+            Prix: \(self.nom)
+            Nom: \(self.prix)
+            Catégorie:  \(categorie.categorieToString())
+            ID: \(self.id)
+            
+            """)
+
+    }
     
 }
     
@@ -58,3 +72,53 @@ struct Article {
 // 1. où précisément mettre les accolades ?
 // 2. On n'est apparemment pas obligé d'intialiser les attributs, est-ce par ce qu'ils le seront par le constructeur
 // 3. rawValue des case de enum ?
+//import Foundation
+//
+//struct Article {
+//    enum Categorie:String {
+//        case Inconnu = "Inconnu"
+//        case Multimedia = "Multimedia"
+//        case Outil = "Outil"
+//        case Meuble = "Meuble"
+//        case Divers = "Divers"
+//
+//        func categorieToString() -> String {
+//            return self.rawValue
+//        }
+//    }
+//
+//    //Une variable static est une variable qui est commune à toutes les instances d'Article
+//    //Sa valeur est commune à toute les instances d'Article
+//    private static var n_article = 0
+//
+//    static func nombreDarticle() -> Int {
+//        return Article.n_article
+//    }
+//
+//    var nom:String
+//    var prix:Float
+//    var categorie:Categorie
+//    var id: Int = 0
+//    
+//    //le constructeur de base est surchargé par les deux définitions suivantes
+//    init(nom: String, prix: Float) {
+//        Article.n_article += 1
+//        self.id = Article.n_article
+//        self.categorie = .Inconnu
+//        self.nom = nom
+//        self.prix = prix
+//    }
+//
+//    init(nom: String, prix: Float, categorie: Categorie) {
+//        self.init(nom: nom, prix: prix)
+//        self.categorie = categorie
+//    }
+//
+//    func affiche() {
+//        print("""
+//            Prix: \(self.nom)
+//            Nom: \(self.prix)
+//            Catégorie:  \(categorie.categorieToString())
+//            ID: \(self.id)
+//            """)
+//
