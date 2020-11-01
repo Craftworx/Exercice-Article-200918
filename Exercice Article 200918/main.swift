@@ -1,41 +1,91 @@
+//A partir de l'exercice 04, réaliser une application console qui demandera à l'utilisateur d'entrer un nom d'article et son prix.
+//Une fois les informations récupérées, créer une instance de la structure structure Article et l'ajouter à l'array d'articles (voir NOTES).
+//Il doit etre possible d'entrer un nombre d'artcile à l'infini (tant que le programme tourne).
 //
-//  main.swift
-//  Exercice Article 200918
-//Créer une structure Article qui contient un prix (Float), un nom (String), et un identifiant (Int)
-//Cette structure devra être créée dans un autre fichier (Article.swift) pour une question de clareté.
-//Créer une fonction (interne à la structure Article) print() qui affichera dans la console:
+//Exemple de sortie:
+//  -
+//Indiquez le nom de l'article
+//Couteau
+//Indiquez le prix de l'article
+//2.99
 //
-//Article 78
-//Nom: Ordinateur
-//Prix: 999.99
+//L'article 'Couteau' a été ajouté avec le numéro d'article 0.
 //
-//Créer une instance d'article.
-//Utiliser la fonction print() sur cette instance
+//Indiquez le nom de l'article
+//Stylo bille
+//Indiquez le prix de l'article
+//0.99
+//
+//l'article 'Stylo bille' a été ajouté avec le numéro d'article 1
 //
 //NOTES:
-//La structure Article doit se trouver dans un fichier séparé.
+//Il faut s'assurer que le numéro d'article est unique (variable globale incrémenté à la création d'un nouvel article).
+//Un array d'article se défini comme suit:
+//
+//var articles = [Article]()
+//
+//L'ajout d'un article à cet array se fait comme suit:
+//
+//articles.append(article)
+//
+//où article est une instance d' Article
+//
+//
 
-//Voilà une deuxième version qui afffiche le nom et le prix mais pas encore d'incrémentation de l'identifiant
 
-//Il faut s'assurer que le numéro d'article est unique (variable globale incrémenté à l'ajout de nouvel article).
-//  Created by Al on 18/09/2020.
-//  Copyright © 2020 Cool Apps. All rights reserved.
 //
 
 import Foundation
 
-let a1 = Article(nom: "Poupée", prix: 38.99, categorie:.Divers)
+let stock = Stock()
 
-a1.affiche()
+while(true) {
+    
+    print("Souhaitez-vous quitter l'application console qui vous permet d'enregister des articles ? Tapez o (oui) pour quitter, sinon tapez n'importe quelle touche pour enregistrer un article")
+    
+    if let input0 = readLine() {
+        if input0 == "o" {
+            break
+        } else {
+            print("Indiquez le nom de l'article, s'il vous plaît: ")
+            let input1 = readLine()
+            print("Et son prix ? C'est obligatoire, merci ")
+            let input2 = readLine()
+            
+            if let articleString = input1, let prixString = input2 {
+                if  let prixFloat = Float(prixString) {
+//                   let a1 = Article(nom: articleString, prix: prixFloat, categorie:.Divers)
+//                    stock.addArticle(a1)
+                   stock.addArticle(nom: articleString, prix: prixFloat, categorie: .Inconnu)
+                    
+                } else {
+                    print("les données du prix n'ont pas été rentrées correctement")
+                    //on met le else ici car il est impossible de ne pas rentrer un String en réponse à readLine, en effet même si on tape juste Enter, cela donnera la variable String "".
+                }
+            }
+        }
+    }
+}     
 
-let a2 = Article(nom: "brol", prix: 12.0, categorie:.Multimedia)
-a2.affiche()
+print("Pour visualiser les articles enregistrés, touchez n'importe quelle touche ?")
+    if readLine() != nil {
+        stock.affichage()
+    }
 
-let a3 = Article(nom: "livre", prix: 13)
-a3.affiche()
+// afficher les 10 premiers items de l'array
 
-var a4 = Article(nom: "essuie-patates", prix: 2453.99)
-a4.affiche()
+
+//
+
+//
+//let a2 = Article(nom: "brol", prix: 12.0, categorie:.Multimedia)
+//a2.affiche()
+//
+//let a3 = Article(nom: "livre", prix: 13)
+//a3.affiche()
+//
+//var a4 = Article(nom: "essuie-patates", prix: 2453.99)
+//a4.affiche()
 
 //marche pas, pas moyen de créer un article optionnel
 
